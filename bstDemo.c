@@ -3,36 +3,59 @@
 #include <string.h>
 #include "bst.h"
 
+void ui(){
+  FILE* file = fopen("./names.txt","r");
+  char *line=NULL;
+  ssize_t read;
+  size_t len = 0;
+  node *r = NULL;
+  node *tree = NULL;
+  int in;
+  int i = 1;
+  char *del;
+  while(i == 1){
+    printf("1.Show employees\n");
+    printf("2.Add Employee\n");
+    printf("3.Remove employe\n"); 
+    printf("4.Exit\n");
+    scanf("%d" ,&in);
+    switch(in)
+    {
+    case 1:
+      printf("Employees:\n");
+      printInOrder(tree,file);
+      break;
+    case 2:
+      printf("enter name to add\n");
+      tree=insert(tree,"Hello");
+      break;
+    case 3:
+      
+      printf("enter name to remove\n");
+      scanf("%s",del);
+      tree = delete(tree,del);
+      printInOrder(tree,file);
+      break;
+    case 4:
+      i = 0;
+      break;
+    }
+  }
+}
+
+node* construct(){
+  FILE* file = fopen("./names.txt","r");
+  char *line=NULL;
+  ssize_t read;
+  size_t len = 0;
+  node *r = NULL;
+ 
+    
+  return r;
+}
+
 int main()
 {
-  FILE * file_names;
-  char * line = NULL;
-  size_t bsize = 0;
-  size_t ch;
-   file_names = fopen("./names.txt","r"); //read
-  if(file_names == NULL){
-    printf("null file");
-  }
-  fclose(file_names);
-  // node *r = new("test");
-  node *r=NULL;
-   char *aperson1 = (char *)malloc(sizeof 256);
-    r=insert(r,"aperson1");
-    r=insert(r,"cperson2");
-    r=insert(r,"bperson3");
-  // printf("%s\n",r->person);
-
-  //write file
-  
-  FILE * o_names;
-  o_names = fopen("./orderedNames.txt","w"); 
-  printInOrder(r,o_names);
-  fclose(o_names);
-  // fprintf(o_names,"%s","string test");
-  // while((ch = getline(&line,&bsize, file_names)) != -1){
-   // fprintf(ordered,"%s\n",line);
-   // printInOrder(*r)
-  // fprintf(o_names,"%s\n","string test");
-  // }
+  ui();
   return 1;  
 }
