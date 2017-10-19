@@ -18,6 +18,6 @@ To delete binaries:
 $ make clean
 ~~~
 
-# Things to figure out #
+# Collaboration #
 
 Debugged with Cynthia Valencia. 
